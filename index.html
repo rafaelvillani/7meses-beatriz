@@ -125,11 +125,11 @@ opacity:0.7;
 <h1>Há 7 meses atrás, minha vida ganhou um novo sentido.</h1>
 <p>E desde então, cada dia com você se tornou especial.</p>
 <br>
-<button onclick="startMusic()">Começar nossa história ❤️‍🔥</button>
+<button id="startBtn">Começar nossa história ❤️‍🔥</button>
 </section>
 
 <audio id="music" loop>
-<source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
+<source src="music.mp3" type="audio/mpeg">
 </audio>
 
 <!-- MESES -->
@@ -218,19 +218,42 @@ Feito com amor por Villani.
 
 <script>
 
-function startMusic(){
-document.getElementById("music").play();
-}
+document.addEventListener("DOMContentLoaded", function() {
 
-const sections = document.querySelectorAll("section");
+    const sections = document.querySelectorAll("section");
+    const startBtn = document.getElementById("startBtn");
+    const music = document.getElementById("music");
 
-window.addEventListener("scroll", () => {
-sections.forEach(sec => {
-const top = sec.getBoundingClientRect().top;
-if(top < window.innerHeight - 100){
-sec.classList.add("show");
-}
-});
+    // Mostra primeira seção automaticamente
+    sections[0].classList.add("show");
+
+    // Animação ao rolar
+    function revealOnScroll() {
+        sections.forEach(sec => {
+            const top = sec.getBoundingClientRect().top;
+            if (top < window.innerHeight - 80) {
+                sec.classList.add("show");
+            }
+        });
+    }
+
+    window.addEventListener("scroll", revealOnScroll);
+
+    // Botão + música
+    if(startBtn){
+        startBtn.addEventListener("click", function(){
+            music.play().then(() => {
+                startBtn.style.display = "none";
+                window.scrollTo({
+                    top: window.innerHeight,
+                    behavior: "smooth"
+                });
+            }).catch(err => {
+                console.log("Erro ao tocar música:", err);
+            });
+        });
+    }
+
 });
 
 </script>
