@@ -5,90 +5,171 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>7 Meses ❤️‍🔥</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
 <style>
-body {
-    margin:0;
-    font-family: 'Arial', sans-serif;
-    text-align:center;
-    background:#fff;
-    color:#333;
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
 }
 
-section {
-    padding:60px 20px;
+body{
+font-family:'Poppins', sans-serif;
+background:#fff;
+color:#333;
+overflow-x:hidden;
 }
 
-button {
-    padding:15px 30px;
-    font-size:18px;
-    background:#ff4d6d;
-    color:white;
-    border:none;
-    border-radius:30px;
+section{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:40px;
+opacity:0;
+transform:translateY(40px);
+transition:all 1.2s ease;
 }
 
-.timeline {
-    background:#fff0f3;
+section.show{
+opacity:1;
+transform:translateY(0);
 }
 
-.black {
-    background:black;
-    color:white;
+/* ABERTURA */
+.hero{
+background:linear-gradient(135deg,#fff0f3,#ffe5ec);
 }
 
-h1,h2 {
-    margin-bottom:20px;
+.hero h1{
+font-size:28px;
+margin-bottom:20px;
 }
 
-.message {
-    background:black;
-    color:white;
-    padding:80px 20px;
-    font-size:20px;
-    line-height:1.6;
+.hero button{
+padding:15px 35px;
+border:none;
+border-radius:40px;
+background:#ff4d6d;
+color:white;
+font-size:18px;
+cursor:pointer;
+transition:0.4s;
+box-shadow:0 0 15px rgba(255,77,109,0.4);
 }
+
+.hero button:hover{
+transform:scale(1.05);
+box-shadow:0 0 25px rgba(255,77,109,0.8);
+}
+
+/* MESES */
+.month{
+background:white;
+}
+
+.month:nth-child(even){
+background:#fff5f7;
+}
+
+.month h2{
+font-size:24px;
+margin-bottom:15px;
+color:#ff4d6d;
+}
+
+.month p{
+max-width:600px;
+line-height:1.6;
+font-weight:300;
+}
+
+/* MURAL */
+.mural{
+background:black;
+color:white;
+}
+
+.mural h2{
+margin-top:30px;
+color:#ff758f;
+}
+
+/* FINAL */
+.final{
+background:black;
+color:white;
+font-size:18px;
+line-height:1.8;
+padding:60px;
+}
+
+.signature{
+margin-top:40px;
+font-size:14px;
+opacity:0.7;
+}
+
 </style>
 </head>
 
 <body>
 
-<!-- Abertura -->
-<section>
+<!-- ABERTURA -->
+<section class="hero">
 <h1>Há 7 meses atrás, minha vida ganhou um novo sentido.</h1>
 <p>E desde então, cada dia com você se tornou especial.</p>
-<button onclick="document.getElementById('music').play()">Começar nossa história</button>
+<br>
+<button onclick="startMusic()">Começar nossa história ❤️‍🔥</button>
 </section>
 
 <audio id="music" loop>
 <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
 </audio>
 
-<!-- Linha do Tempo -->
-<section class="timeline">
+<!-- MESES -->
+<section class="month">
 <h2>Mês 1 — O Começo</h2>
 <p>Tudo começou aqui… Entre olhares tímidos e sorrisos que já diziam tudo.</p>
+</section>
 
+<section class="month">
 <h2>Mês 2 — Nos conhecendo mais</h2>
 <p>A conexão começou a virar certeza.</p>
+</section>
 
+<section class="month">
 <h2>Mês 3 — Amar é permanecer</h2>
 <p>Mesmo nos dias difíceis, você continuou sendo meu lugar seguro.</p>
+</section>
 
+<section class="month">
 <h2>Mês 4 — Escolhendo você</h2>
 <p>Nosso amor já não era só sentimento… já era escolha.</p>
+</section>
 
+<section class="month">
 <h2>Mês 5 — Nosso Recomeço</h2>
 <p>Que todos os próximos janeiros sejam ao seu lado.</p>
+</section>
 
+<section class="month">
 <h2>Mês 6 — Certeza</h2>
 <p>Eu me apaixono por você todos os dias.</p>
+</section>
 
+<section class="month">
 <h2>Mês 7 — Amor que virou certeza</h2>
 <p>Quanto mais perto eu fico de você… mais eu tenho certeza que é aqui que eu pertenço.</p>
 </section>
 
-<!-- Mural Musical -->
-<section class="black">
+<!-- MURAL MUSICAL -->
+<section class="mural">
 <h1>Mural Musical 🎵</h1>
 
 <h2>Músicas que me lembram você</h2>
@@ -111,8 +192,8 @@ h1,h2 {
 <p>Amar Não É Pecado (Ao Vivo) — Luan Santana</p>
 </section>
 
-<!-- Mensagem Final -->
-<section class="message">
+<!-- FINAL -->
+<section class="final">
 <p>
 Se passaram 7 meses… e isso é só o começo da nossa história.<br><br>
 
@@ -130,10 +211,29 @@ Eu te amo muito, minha ursinha. ❤️‍🔥<br><br>
 Feliz 7 meses de muito amor.
 </p>
 
-<p style="margin-top:40px; font-size:14px;">
+<div class="signature">
 Feito com amor por Villani.
-</p>
+</div>
 </section>
+
+<script>
+
+function startMusic(){
+document.getElementById("music").play();
+}
+
+const sections = document.querySelectorAll("section");
+
+window.addEventListener("scroll", () => {
+sections.forEach(sec => {
+const top = sec.getBoundingClientRect().top;
+if(top < window.innerHeight - 100){
+sec.classList.add("show");
+}
+});
+});
+
+</script>
 
 </body>
 </html>
