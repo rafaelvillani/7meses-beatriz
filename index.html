@@ -129,7 +129,7 @@ opacity:0.7;
 </section>
 
 <audio id="music" loop>
-<source src="music.mp3" type="audio/mpeg">
+<source src="./romantic-piano.mp3.mp3" type="audio/mpeg">
 </audio>
 
 <!-- MESES -->
@@ -220,15 +220,15 @@ Feito com amor por Villani.
 
 document.addEventListener("DOMContentLoaded", function() {
 
-    const sections = document.querySelectorAll("section");
     const startBtn = document.getElementById("startBtn");
     const music = document.getElementById("music");
+    const sections = document.querySelectorAll("section");
 
-    // Mostra primeira seção automaticamente
+    // Primeira seção já aparece
     sections[0].classList.add("show");
 
     // Animação ao rolar
-    function revealOnScroll() {
+    function reveal() {
         sections.forEach(sec => {
             const top = sec.getBoundingClientRect().top;
             if (top < window.innerHeight - 80) {
@@ -237,22 +237,19 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    window.addEventListener("scroll", revealOnScroll);
+    window.addEventListener("scroll", reveal);
 
-    // Botão + música
-    if(startBtn){
-        startBtn.addEventListener("click", function(){
-            music.play().then(() => {
-                startBtn.style.display = "none";
-                window.scrollTo({
-                    top: window.innerHeight,
-                    behavior: "smooth"
-                });
-            }).catch(err => {
-                console.log("Erro ao tocar música:", err);
-            });
+    // Botão tocar música
+    startBtn.addEventListener("click", function() {
+
+        music.play().then(() => {
+            startBtn.innerText = "Nossa história começou ❤️‍🔥";
+            startBtn.style.opacity = "0.7";
+        }).catch(err => {
+            alert("A música não carregou. Verifique se romantic-piano.mp3.mp3 está no GitHub.");
         });
-    }
+
+    });
 
 });
 
